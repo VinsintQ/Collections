@@ -42,20 +42,39 @@ public class Main {
     }
 
     public static int sumOfTwoLargest(int[] array) {
-
-
-        Arrays.sort(array);
-
-    if (array.length==0){
-        return 0;
-    }
-        if (array.length ==1){
+      LinkedList<Integer> copy = new LinkedList<Integer>();
+        if (array.length==0){
+            return 0;
+        }else if (array.length==1) {
             return array[0];
         }
 
+        for (int a :array){
+            copy.add(a);
+        }
+        int largest =copy.getFirst();
+         for (int a : copy){
+             if (largest<a){
+                 largest=a ;
+             }
+         }
+
+        copy.remove((Object)largest);
+        int second_Largest = copy.getFirst();
+        for (int a : copy){
+            if (second_Largest<a){
+                second_Largest=a ;
+            }
+        }
 
 
-        return array[array.length-1] +(int)array[array.length-2] ;
+            return second_Largest+largest;
+
+
+
+
+
+
     }
 
 
